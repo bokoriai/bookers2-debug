@@ -47,15 +47,15 @@ class User < ApplicationRecord
   
   def self.search_for(method, word)
     if method == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
+      User.where("name LIKE?", "#{word}")
     elsif method == "forward_match"
-      @user = User.where("name LIKE?", "#{word}%")
+      User.where("name LIKE?", "#{word}%")
     elsif method == "backward_match"
-      @user = User.where("name LIKE?", "%#{word}")
+      User.where("name LIKE?", "%#{word}")
     elsif method == "partial_match"
-      @user = User.where("name LIKE?", "%#{word}%")
+      User.where("name LIKE?", "%#{word}%")
     else
-      @user = User.all
+      User.all
     end
   end
   
