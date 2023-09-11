@@ -11,24 +11,24 @@
   <% if book.id.nil? %>
     <div class="form-group" id="star">
       <%= f.label :star %>
-      <%= f.hidden_field :star, id:review_star, class: 'form-control' %>
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
     <script>
       // scriptファイルをどのidの部分に配置するかを指定
-      $(document).on('thrbolinks:load', function() {
+      $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
       
-        elem interHTML = ""
+        elem.innerHTML = ""
         let opt = {
           //星画像の指定などのオプションをここに記述,  
-          starOn: "<%= asset_path('star-on.ong') %>",
+          starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
           scoreName: 'book[star]',
         };
-        raty(elem,opt);
+        raty(elem, opt);
       });
     </script>
   <% else %>
